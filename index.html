@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dorka & Kristóf</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", "Calibri Light" sans-serif;
+      color: #111;
+      background: #fff;
+      text-align: center;
+      line-height: 1.0;
+    }
+
+
+
+    header img {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    section {
+      padding: 20px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    /* ===== FADE GALÉRIA ===== */
+    .fade-slider {
+      position: relative;
+      max-width: 700px;
+      height: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .fade-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .fade-slider img.active {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .fade-slider {
+        height: 1000x;
+      }
+    }
+
+    /* Text */
+    .description {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .meghivo img {
+      max-width: 600px;
+      /* <-- itt állítod a méretet */
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    footer a {
+      display: block;
+      margin: 15px 0;
+      color: #111;
+      text-decoration: none;
+      font-size: 16px;
+      border-bottom: 1px solid transparent;
+    }
+
+    footer a:hover {
+      border-bottom: 1px solid #111;
+    }
+
+    .meghivo-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .meghivo-card h1 {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .meghivo-card p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .oaths {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      text-align: left;
+      align-items: stretch;
+    }
+
+    .oath-card {
+      background: #f9f5f2;
+      border: 1px solid rgba(17, 17, 17, 0.15);
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 20px rgba(17, 17, 17, 0.03);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .oath-card h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .oath-card p {
+      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .oath-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .oath-card em {
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .oath-card {
+        padding: 18px 16px;
+      }
+
+      .oath-card h3 {
+        font-size: 18px;
+      }
+
+      .oath-card p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      width: 60px;
+      height: 1px;
+      background: #111;
+      opacity: 0.25;
+    }
+
+    .divider span {
+      width: 6px;
+      height: 6px;
+      background: #111;
+      border-radius: 50%;
+      margin: 0 12px;
+      opacity: 0.4;
+    }
+
+    .map-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #map {
+      width: 100%;
+      height: 400px;
+      margin: 30px 0;
+    }
+
+    #countdown-section {
+      padding: 20px;
+    }
+
+    #countdown {
+      font-size: 20px;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGÓ -->
+  <header>
+    <img src="./kepek/DK.webp" alt="Dorka & Kristóf">
+  </header>
+
+  <!-- GALÉRIA (ÁTTŰNÉS) -->
+  <section>
+    <div class="fade-slider">
+      <img src="./kepek/image0.webp" class="active" alt="">
+      <img src="./kepek/image1.webp" alt="">
+      <img src="./kepek/image2.webp" alt="">
+      <img src="./kepek/image3.webp" alt="">
+      <img src="./kepek/image4.webp" alt="">
+    </div>
+    <div style="padding-top: 20px;">
+      <a href="./gallery.html"
+        style="display:inline-block; margin: 0 auto; padding: 12px 22px; border: 1px solid #111; border-radius: 999px; text-decoration: none; color: #111; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">Galéria</a>
+    </div>
+  </section>
+
+  <!-- LEÍRÁS -->
+  <section>
+    <div class="meghivo-card">
+      <h1>Esküvői meghívó</h1>
+
+      <div class="divider"><span></span></div>
+
+      <p>
+        Szeretettel meghívunk téged esküvőnkre és az azt követő vacsorára, hogy együtt ünnepelhessük életünk egyik
+        legszebb napját, melyet 2026.09.12-én tartunk a Hármashatárhegy szívében található Tündérerdőben.
+      </p>
+
+      <div class="divider"><span></span></div>
+
+      <p>
+        Kérünk, hogy időben érkezz, ugyanis 16:30-kor már kezdünk a vendégfogadással, ahol Réka által készített
+        finomságot is kóstolhattok. A ceremónia 17:00-kor kezdődik, majd ezt követően egy finom vacsorával folytatódik
+        az esemény. A nagy napunk egészen 21:00-ig tart, így a hazaút mindenkinek könnyen megoldható lesz akár még
+        nappali BKV járattal is, az este folytatására természetesen mindketten nyitottak vagyunk egy másik helyszínen!
+      </p>
+
+      <div class="divider"><span></span></div>
+
+      <p><em>
+          Ha nászajándékon töröd a fejed, hidd el egy borítékban a legszebb. Hogy el ne hagyjon minket a szerencse, egy
+          jó kaparós sorsjegyet is hozz a perselybe.
+        </em></p>
+
+      <div class="divider"><span></span></div>
+    </div>
+  </section>
+  <section>
+    <div class="oaths">
+      <article class="oath-card">
+        <h3>Dorka fogadalma</h3>
+        <p>Életem legnagyobb csodája vagy, és soha senki nem tett még ennyire boldoggá, mint te. Köszönöm, hogy megmutattál nekem egy teljesen más perspektívát a létezésre, és hogy melletted teljesen máshogy látom a világot — és ezzel együtt magamat is.</p>
+        <p>Fogadom, hogy mindent megteszek azért, hogy a közös életünk hátralévő része is ugyanennyi nevetéssel és jókedvvel teljen. És fogadom, hogy szeretni foglak az összes személyiségemmel, minden egyes nap.</p>
+      </article>
+
+      <article class="oath-card">
+        <h3>Kristóf fogadalma</h3>
+        <p>Dorka,</p>
+        <p>Amikor megismertelek, melyről indultunk mind a ketten – nem verseny, de egy orrszőrszállal azért nyertem –, már akkor jött is a First-steps-for-the-future achievement. Azóta pedig… GodSpeed. Azt szeretem benned, hogy türelmes vagy velem – és hát nem kevés kell hozzám, hogy elfogadsz olyannak és olyan bohókásnak, amilyen vagyok, és hogy mindig számíthatok rád. Hogy nem minden problémával egyedül kell megküzdenem. A társam vagy jóban, rosszban – mától papíron is. Ez már nem betéti díj, anyukám, nem visszaváltható. Melletted megtanultam legyőzni a szorongásaimat, és azt is, hogy feltétel nélkül lehet szeretni. Ha azt mondod, hogy „néézd”, már majdnem mindig elsőre oda nézek, ahova mutatsz, és a delulu viszont marad, erről nem nyitok vitát.</p>
+        <p>Ezért megígérem neked, hogy a „Hova?” kifejezést soha nem engedem el, sokat fogunk utazni – igen, repülővel is, ugyanilyen bohókás maradok, figyelmes és odaadó maradok. Kivéve a szopókás póverrádét, az az enyém. Kérés nélkül elmosogatok és leviszem a szemetet, a türelmi idő 1–2 munkanap, és azt az életet teremtem meg neked – persze, lehet beleszólásod –, amit egy ilyen csoda megérdemel.</p>
+        <p>Azt szeretném, hogy te legyél a világ legboldogabb felesége a következő legalább 70–80 évben. Nem ígérem, hogy mindig könnyű lesz velem, de még mennyire nem. Viszont azt megígérem, hogy bármi történjen is, soha nem kell egyedül szembenézned vele. Ha szükséged lesz rám, csapot, papot, nádihegedűt eldobok, és ott leszek neked. Mert téged választalak. Jóban, rosszban, nevetésben, szorongásban, utazásokban, macskaalmos padlóval, Poverrádeban és mindenben, ami még előttünk áll. És ha rajtam múlik, ezt az egész őrült, bohókás életet veled fogom végigcsinálni. Szeretlek.</p>
+      </article>
+
+      <article class="oath-card">
+        <h3>Éci beszéde</h3>
+        <p>Kedves Család, Barátok, és mindenki, aki ma itt van! Először is szeretnélek benneteket szeretettel köszönteni. Kicsit különleges helyzetben vagyok, mert Kristóf családjának és barátainak nagy részével ma találkozom először. És mivel mi a húgommal elég messze élünk egymástól, az ő barátai közül is sokakat most ismerek meg először. Mégis van valami nagyon jó érzés abban, hogy ma ennyi, számomra részben ismeretlen ember van egy helyen, akikben egy dolog biztosan közös: mindannyian fontosak vagytok nekik, és azért vagytok itt, mert valamilyen módon részei vagytok az életüknek. És akkor most szeretnék néhány szót mondani a húgomhoz. Először is: köszönöm, hogy bár egy kicsit késve érkeztél az életembe – majdnem 15 évet kellett várnom rád –, de végül megjöttél. És bátran mondhatom, hogy a testvérednek lenni felemelőbb érzés, mint szuperhősnek lenni. Bár néha legalább akkora kihívás is volt. Amikor körülbelül 13 éves voltál, egyszer úgy éreztem, elérkezett az a pillanat, amikor idősebb nővérként át kell adnom neked az élet nagy bölcsességeit. Elmondtam, mitől kellene távol tartanod magad, hogyan kellene átgondoltan élned, milyen fiúkat kellene messzir elkerülnöd… Egyszóval megtartottam neked a saját kis hegyi beszédemet. Te pedig végighallgattál, majd nagyjából annyit mondtál: „Én magam szeretnék hibázni, és azokból tanulni.” Azt hiszem, ott ért véget az én nevelési pályafutásom. Innentől kezdve már csak egy feladatom maradt: melletted lenni, támogatni téged, és végigasszisztálni azt a jó néhány tévedést, amelyből – ahogy ígérted – valóban saját magad tanultál. És hát… megcsókoltál néhány békát, mire végre megtaláltad a Dinget. Kristóf, én pedig nagyon örülök annak, hogy végül benned találta meg. Nemcsak azért, mert látom, hogy szeret téged, és hogy te is szereted őt, hanem azért is, mert nekünk is nagyon könnyű téged szeretni és elfogadni. Ezzel pedig, meg kell mondanom, az én nővéri dolgomat is jelentősen megkönnyítetted. Azt kívánom nektek, hogy hosszú, boldog, szeretettel és szerelemmel teli, tartalmas és eseménydús közös életetek legyen. De leginkább azt kívánom, hogy ez az élet tényleg közös legyen. Hogy legyen benne helyetek együtt változni, tanulni és néha hibázni is. Hogy tudjatok együtt nevetni azon, amin ma még talán aggódtok, és egymás mellett maradni akkor is, amikor az élet éppen nem a könnyebbik oldalát mutatja. Legyetek egymás társai, szövetségesei és biztos pontjai. És ha egyszer majd visszanéztek erre a mai napra, remélem, azt érzitek majd, hogy nem ez volt életetek legszebb napja – hanem csak az első a nagyon sok közül. Nagyon szeretlek benneteket.</p>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Étlap</h2>
+    <div class="etlap">
+      <img src="./kepek/étlap.webp" alt="Étlap" style="max-width: 100%; height: auto;">
+    </div>
+  </section>
+
+
+  <section>
+    <h2>Helyszín</h2>
+    <div class="map-wrapper">
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="countdown-title">Még ennyi idő a Nagy Napig:</h2>
+    <div id="countdown"></div>
+  </section>
+  <section>
+    <img src="./kepek/DK.webp" alt="Dorka & Kristóf" style="max-width: 400px; width: 100%; height: auto;">
+  </section>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- FADE GALÉRIA SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = document.querySelectorAll(".fade-slider img");
+      let current = 0;
+
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 6000);
+    });
+  </script>
+
+  <!-- GOOGLE MAP -->
+  <script>
+    function initMap() {
+      const weddingLocation = { lat: 47.54778488813416, lng: 18.995076657669756 };
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: weddingLocation,
+        disableDefaultUI: true
+      });
+
+      const marker = new google.maps.Marker({
+        position: weddingLocation,
+        map: map,
+        title: "Esküvő helyszíne",
+        icon: {
+          url: "./kepek/pingpong.webp",
+          scaledSize: new google.maps.Size(50, 50)
+        },
+        animation: google.maps.Animation.BOUNCE
+      });
+
+      const mapsUrl =
+        "https://www.google.com/maps/search/?api=1&query=Budapest,+Sz%C3%A9pv%C3%B6lgyi+d%C5%B1l%C5%91+1,+1024";
+
+      marker.addListener("click", () => {
+        window.open(mapsUrl, "_blank");
+      });
+    }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCss5zjrYJD9pm86rCG-dq7ct0O-bof9Vg&callback=initMap"
+    async defer></script>
+
+  <script src="./scripts/wow.min.js"></script>
+
+  <script src="./scripts/jquery-3.7.1.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="./scripts/slick.min.js"
+    integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="./scripts/jquery.lazy.min.js"
+    integrity="sha512-eviLb3jW7+OaVLz5N3B5F0hpluwkLb8wTXHOTy0CyNaZM5IlShxX1nEbODak/C0k9UdsrWjqIBKOFY0ELCCArw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="./scripts/all.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const openMenuButton = document.getElementById('openMenu');
+      const closeMenuButton = document.getElementById('closeMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      openMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.add('active');
+      });
+
+      closeMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.remove('active');
+      });
+    });
+  </script>
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const titleElement = document.getElementById("countdown-title");
+
+    const weddingDate = new Date("2026-09-12T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        titleElement.textContent = "Eljött a Nagy Nap 🎉";
+        countdownElement.textContent = "";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdownElement.textContent =
+        `${days} nap ${hours} óra ${minutes} perc ${seconds} mp`;
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+
+</html>
